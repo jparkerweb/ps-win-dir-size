@@ -8,8 +8,9 @@ A PowerShell script for analyzing disk space usage on local and network paths. Q
 
 - **Network Path Support** - Works with both local and network paths (SMB shares)
 - **Progressive Output** - Shows real-time progress as directories are scanned
+- **Resume Support** - If a scan is interrupted (Ctrl+C, network drop, etc.), resume from where it left off at next startup
 - **Access Denied Handling** - Gracefully continues scanning if access is denied to specific folders
-- **Top 100 Summary** - Displays the largest directories ranked by size
+- **Top 100 Summary** - Displays the largest directories ranked by size, including last-modified date
 - **Multiple Size Formats** - Shows sizes in bytes, MB, and GB for flexibility
 - **Error Reporting** - Provides summary statistics on scan completion and errors encountered
 
@@ -27,12 +28,22 @@ A PowerShell script for analyzing disk space usage on local and network paths. Q
 .\ps-get-dir-size.ps1
 ```
 
-The script will prompt you to enter the path to analyze:
+If incomplete scans exist, the script prompts to resume one first:
 
 ```
 Directory Size Analyzer
 ======================
 
+Incomplete scans found:
+
+  [1] C:\Users  (3/10 folders, started 2026-03-09 11:30)
+
+Enter number to resume, or press Enter for a new scan:
+```
+
+Press Enter (blank) to skip and enter a new path:
+
+```
 Enter the path to analyze (e.g., \\server\share or C:\Users):
 ```
 
@@ -80,13 +91,13 @@ After scanning completes, the top 100 largest directories are displayed:
 Top 100 Largest Directories
 ================================
 
-Directory           Size (GB)    Size (MB)
----------           ---------    ---------
-Videos              234.56       240,230.40
-Music               45.12        46,172.16
-Documents          15.67        16,044.00
-Downloads           8.34         8,540.16
-Desktop             2.45         2,508.80
+Directory           Size (GB)    Size (MB)    Last Modified
+---------           ---------    ---------    -------------
+Videos              234.56       240,230.40   2026-01-10
+Music               45.12        46,172.16    2025-11-03
+Documents           15.67        16,044.00    2026-02-28
+Downloads            8.34         8,540.16    2026-03-01
+Desktop              2.45         2,508.80    2026-03-09
 
 Summary Statistics:
 Total size of all subdirectories: 306.14 GB
@@ -100,10 +111,10 @@ The script handles common errors gracefully:
 
 - **Invalid Path** - Validates the path exists before scanning
 - **Not a Directory** - Checks that the path is a directory, not a file
-- **Access Denied** - Marks inaccessible folders as `[Access Denied]` and continues scanning
+- **Access Denied** - Marks inaccessible folders as `[Access Denied]` and continues scanning; included in results with size 0
+- **Deleted Mid-Scan** - Folders removed while scanning appear as `[Deleted]` and are excluded from results; not counted as errors
 - **Network Issues** - Provides error messages for connectivity problems
-
-If access is denied to a directory, it's still included in results with a size of 0 bytes.
+- **Interrupted Scans** - State is persisted after every folder; resume at next startup without re-scanning completed folders
 
 ## Performance
 
