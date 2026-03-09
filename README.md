@@ -114,7 +114,7 @@ The script handles common errors gracefully:
 - **Access Denied** - Marks inaccessible folders as `[Access Denied]` and continues scanning; included in results with size 0
 - **Deleted Mid-Scan** - Folders removed while scanning appear as `[Deleted]` and are excluded from results; not counted as errors
 - **Network Issues** - Provides error messages for connectivity problems
-- **Interrupted Scans** - State is persisted after every folder; resume at next startup without re-scanning completed folders
+- **Interrupted Scans** - State is persisted after every folder to `.\state\<folder>-dirscan-<timestamp>.json`; resume at next startup without re-scanning completed folders
 
 ## Performance
 

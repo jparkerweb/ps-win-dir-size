@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Resume support** — interrupted scans are saved to `.\state\dirscan-<timestamp>.json` after every folder; on startup the script lists incomplete scans and lets the user resume from where it left off
+- **Resume support** — interrupted scans are saved to `.\state\<folder>-dirscan-<timestamp>.json` (e.g. `scan-dirscan-20260309-113000.json`) after every folder; on startup the script lists incomplete scans and lets the user resume from where it left off
 - `Get-StateDirectory`, `Get-IncompleteScans`, `New-ScanState`, `Save-ScanState`, `Show-ResumptionMenu` helper functions for state management
 - `Last Modified` column in the results table (captured from `LastWriteTime` at scan time, formatted `yyyy-MM-dd`)
 - `[Deleted]` progress indicator for folders that disappear mid-scan; these are not counted as errors and not added to results

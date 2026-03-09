@@ -65,9 +65,10 @@ function New-ScanState {
         [string[]]$PendingFolders
     )
 
-    $stateDir = Get-StateDirectory
-    $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-    $stateFilePath = Join-Path $stateDir "dirscan-$timestamp.json"
+    $stateDir    = Get-StateDirectory
+    $timestamp   = Get-Date -Format "yyyyMMdd-HHmmss"
+    $leafName    = Split-Path -Path $Path -Leaf
+    $stateFilePath = Join-Path $stateDir "$leafName-dirscan-$timestamp.json"
 
     $state = @{
         Version        = "1.0"
