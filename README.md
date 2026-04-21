@@ -2,7 +2,7 @@
 
 A PowerShell script for analyzing disk space usage on local and network paths. Quickly identify which top-level subdirectories consume the most storage space.
 
-<img src="ps-win-dir-size.jpg" width="800">
+<img src="https://github.com/jparkerweb/ps-win-dir-size/raw/main/ps-win-dir-size.jpg" alt="banner" width="800">
 
 ## Features
 
