@@ -1,8 +1,15 @@
 # ps-get-dir-size
 
+<img src="https://github.com/jparkerweb/ps-win-dir-size/raw/main/ps-win-dir-size.jpg" alt="banner" width="800">
+
 A PowerShell script for analyzing disk space usage on local and network paths. Quickly identify which top-level subdirectories consume the most storage space.
 
-<img src="https://github.com/jparkerweb/ps-win-dir-size/raw/main/ps-win-dir-size.jpg" alt="banner" width="800">
+### Maintained by
+<a href="https://www.equilllabs.com">
+  <img src="https://raw.githubusercontent.com/jparkerweb/eQuill-Labs/refs/heads/main/src/static/images/logo-text-outline.png" alt="eQuill Labs" height="40">
+</a>
+
+---
 
 ## Features
 
